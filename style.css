@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family={{timerFont}}');
+
+@import url('https://fonts.googleapis.com/css?family={{googleFont}}');
+
+* {
+  font-family: {{googleFont}};
+  font-weight: {{googleFontWeight}};
+}
+
+
+#event-info-container {  
+  border: {{timerBorder}}px solid {{timerBorderColor}};
+  border-radius: {{borderRadius}}px;
+  margin-bottom: 8px;
+  padding: 8px;
+  color: {{timerColor}};
+  background-image: url("https://c.tenor.com/wVffZ201Z9UAAAAC/tenor.gif");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;  
+  transition: background-image 0.5s ease-in-out;
+  opacity: 1;
+  padding-top: 5%;
+  height: 300px;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+#donation-goal{
+  font-family: {{timerFont}};
+}
+
+#donation-progress{
+  font-family: {{timerFont}};
+}
+
+#timer {
+  font-family: {{timerFont}};
+  font-size: {{timerMainFontSize}}px;
+  margin-left: 10px;
+  margin-top: 190px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  text-align: center;  
+  text-shadow: -5px 0 black, 0 5px black, 5px 0 black, 0 -5px black;
+}
+
+#event-goal {
+  font-family: {{timerFont}};
+  font-size: {{timerMainFontSize}}px;
+  margin-left: 0px;
+  margin-top: 190px;
+  margin-bottom: 0px;
+  margin-right: 10px;
+  text-align: center;  
+  text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;
+}
+
+
+#event-details {
+  font-size: {{timerSubFontSize}}px;
+}
+
+/* General goal-item styling */
+.goal-item {
+  -webkit-text-stroke: 0.15px black;
+  background: linear-gradient(135deg, #4a90e2, #8e44ad);
+  position: relative;
+  border: {{goalBorder}}px solid {{goalBorderColor}};
+  border-radius: {{borderRadius}}px;
+  margin-bottom: 8px;
+  padding: 8px;
+  font-size: {{goalFontSize}}px;
+  color: {{goalColor}};
+  text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;
+  overflow: hidden; /* Ensures the shine effect stays within the element */
+}
+
+/* Middle goal-specific styling */
+.middle-goal-item {
+  -webkit-text-stroke: 0.15px black;
+  position: relative;
+  background: linear-gradient(135deg, #4a90e2, #8e44ad); /* Blue to purple gradient */
+  border: 3px solid rgba(255, 255, 255, 0.8); /* Glowing border */
+  border-radius: {{borderRadius + 4}}px; /* Slightly rounder corners */
+  margin-bottom: 8px;
+  padding: 12px; /* Slightly larger padding for emphasis */
+  font-size: {{goalFontSize}}px; /* Slightly larger font */
+  color: #ffffff; /* Bright white text */
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8); /* Glowing text effect */
+  box-shadow: 0 4px 15px rgba(72, 61, 139, 0.5); /* Cool glow around the goal */
+  overflow: hidden;
+}
+
+/* Enhanced pseudo-element for the middle goal */
+.middle-goal-item::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  transform: rotate(45deg);
+  filter: blur(3px); /* Slightly stronger blur */
+  animation: shine 2s infinite; /* Faster shine animation */
+}
+
+
+/* Add a pseudo-element for the shining effect */
+.goal-item::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: rotate(45deg);
+  filter: blur(2px);
+  animation: shine 3s infinite; /* Shining animation */
+  -webkit-text-stroke: 2px black
+}
+
+/* Shining animation keyframes */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+
+
+.inline-container {
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.overlay-image {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 2;
+}
+
+.text-left {
+  -webkit-text-stroke: 0.15px black;
+  padding-right: .5em;
+  text-align: left;
+  text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;}
+
+.text-right {
+  -webkit-text-stroke: 0.15px black;
+  padding-right: .5em;
+  text-align: right;
+  text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;}
+
+
+.goal-reached {
+  opacity: 50%;
+}
+
+.floating-emote {
+    position: absolute;
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 1.5s ease-in-out;
+    z-index: 9999;
+    animation: floatEmote 3s forwards;
+}
+
+@keyframes floatEmote {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-50px); 
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-150px); 
+    }
+}
+
+#pause-resume-btn {    
+    -webkit-text-stroke: 0.15px black;
+    background-color: #ff0000; /* Red for 'Pause' */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: {{goalFontSize}}px;
+    width: 50%; /* Make it half the width of the goal */
+    margin: 90px auto; /* Center the button horizontally */
+    display: block; /* Ensure it respects the width */
+}
+
+
+#pause-resume-btn:hover {
+    background-color: #cc0000;  /* Darker red on hover */
+}

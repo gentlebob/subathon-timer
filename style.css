@@ -87,24 +87,25 @@
 }
 
 /* Add a pseudo-element for the shining effect */
-.goal-item::before {
+.goal-item-pending::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: -150%; /* Start far outside the element */
+  left: -150%; /* Start far outside the element */
+  width: 250%; /* Make the shine pseudo-element larger */
+  height: 300%; /* Make the shine pseudo-element larger */
   background: linear-gradient(
     120deg,
-    transparent,
-    rgba(255, 255, 255, 0.6),
-    transparent
+    transparent 30%,
+    rgba(255, 255, 255, 0.8) 45%, 
+    rgba(255, 255, 255, 0.8) 60%, 
+    transparent 80%
   );
   transform: rotate(45deg);
-  filter: blur(2px);
-  animation: shine 3s infinite; /* Shining animation */
-  -webkit-text-stroke: 2px black
+  filter: blur(5px); /* Slightly stronger blur for smooth edges */
+  animation: shine 3s infinite; /* Duration remains the same */
 }
+
 
 /* Shining animation keyframes */
 @keyframes shine {

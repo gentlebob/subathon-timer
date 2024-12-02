@@ -105,8 +105,11 @@ const donationImages = [{
     }
 ];
 
-//Pause and resume for when sleepge
-let isPaused = false;
+// Timer in seconds
+let timeLeft = 0;
+let timerTick = undefined;
+// Pause and resume for when sleepge
+let paused = false;
 const pauseResumeBtn = document.getElementById('pause-resume-btn');
 
 // Sub conversion for subs, bits, and tips
@@ -128,9 +131,7 @@ let slidingWindow = 3;
 
 let previousHighestGoal = -1;
 let activeGoals = [];
-// Timer in seconds
-let timer = 0;
-let stopTimer = false;
+
 
 // Time conversion for subs, bits, and tips in minutes
 let t1TimeValue = 3;
@@ -153,18 +154,26 @@ const eventInfoContainer = document.querySelector("#event-info-container");
 //let finishedLoading = false;
 
 function togglePauseResume() {
-    isPaused = !isPaused; // Toggle the paused state
-
-    if (isPaused) {
+    paused = !paused;
+    if (paused) {
+        clearInterval(timerTick);
+        timerTick = undefined;
         // If paused, stop the timer
-        stopTimer = true;
         pauseResumeBtn.textContent = 'Resume'; // Change button text
     } else {
+        timerTick =
+            setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft -= 1;
+                    setTime(timeLeft);
+                }
+            }, 1000);
         // If resumed, continue the timer
-        stopTimer = false;
         pauseResumeBtn.textContent = 'Pause'; // Change button text
     }
 }
+
+
 pauseResumeBtn.addEventListener('click', togglePauseResume);
 
 window.addEventListener('onWidgetLoad', function(obj) {
@@ -217,24 +226,24 @@ window.addEventListener('onWidgetLoad', function(obj) {
     if (simulateSubs + simulateBits + simulateTip > 0) {
         if (simulateSubs) {
             donoCount += t1SubValue * simulateSubs;
-            timer += t1TimeValue * simulateSubs * 60;
+            timeLeft += t1TimeValue * simulateSubs * 60;
         }
         if (simulateBits) {
             donoCount += Math.floor(simulateBits / bitsSubValue);
-            timer = (simulateTip / 5) * bitsTimeValue * 60;
+            timeLeft = (simulateTip / 5) * bitsTimeValue * 60;
         }
         if (simulateTip) {
             donoCount += Math.floor(simulateTip / tipsSubValue);
-            timer = (simulateBits / 500) * tipsTimeValue * 60;
+            timeLeft = (simulateBits / 500) * tipsTimeValue * 60;
         }
     } else {
         donoCount += fieldData.startSubs;
-        timer += fieldData.startTime * 60;
+        timeLeft += fieldData.startTime * 60;
     }
     populateInitialMilestones();
     updateMilestonesAchieved(donoCount);
     updateBackgroundImageWithFade(donoCount);
-    setTime(timer);
+    setTime(timeLeft);
 });
 
 
@@ -495,9 +504,9 @@ window.addEventListener('onEventReceived', function(obj) {
 
     updateMilestonesAchieved(donoCount);
     updateBackgroundImageWithFade(donoCount);
-    timer += timeToAdd;
-    timer = Math.floor(timer);
-    setTime(timer);
+    timeLeft += timeToAdd;
+    timeLeft = Math.floor(timeLeft);
+    setTime(timeLeft);
     checkIfEnded();
 });
 
@@ -674,14 +683,6 @@ setInterval(() => {
     var middleGoalElement = document.querySelector('.goal-item');
     var computedStyle = window.getComputedStyle(middleGoalElement);
 
-    // const img = createStrikethroughImg();
-    // goalsListElement.childNodes[0].appendChild(img);
-    // new Promise(resolve => {
-    //     $(img).animate({
-    //         opacity: 1,
-    //         width: '100%',
-    //     }, 'normal', resolve);
-    // });
     new Promise(resolve => {
         $(goalsListElement.childNodes[0]).animate({
             backgroundColor: goalFadedBackground,
@@ -702,14 +703,6 @@ setInterval(() => {
 
         middleGoalElement.style.background = colorForLastGoals;
 
-        // const img = createStrikethroughImg();
-        // completedOne.appendChild(img);
-        // new Promise(resolve => {
-        //     $(img).animate({
-        //         opacity: 1,
-        //         width: '100%',
-        //     }, 'normal', resolve);
-        // });
         new Promise(resolve => {
             $(completedOne).animate({
                 backgroundColor: goalFadedBackground,
@@ -734,10 +727,9 @@ setInterval(() => {
 }, 3000);
 
 
-setInterval(() => {
-    if (stopTimer) return;
-    if (timer > 0) {
-        timer -= 1;
-        setTime(timer);
+timerTick = setInterval(() => {
+    if (timeLeft > 0) {
+        timeLeft -= 1;
+        setTime(timeLeft);
     }
 }, 1000);

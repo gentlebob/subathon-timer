@@ -65,52 +65,17 @@
 
 /* General goal-item styling */
 .goal-item {
-  -webkit-text-stroke: 0.15px black;
+/*  -webkit-text-stroke: 0.15px black;*/
   background: linear-gradient(135deg, #4a90e2, #8e44ad);
   position: relative;
-  border: {{goalBorder}}px solid {{goalBorderColor}};
-  border-radius: {{borderRadius}}px;
+/*  border: {{goalBorder}}px solid {{goalBorderColor}};*/
+  border-radius: 0px;
   margin-bottom: 8px;
   padding: 8px;
   font-size: {{goalFontSize}}px;
   color: {{goalColor}};
   text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;
   overflow: hidden; /* Ensures the shine effect stays within the element */
-}
-
-/* Middle goal-specific styling */
-.middle-goal-item {
-  -webkit-text-stroke: 0.15px black;
-  position: relative;
-  background: linear-gradient(135deg, #4a90e2, #8e44ad); /* Blue to purple gradient */
-  border: 3px solid rgba(255, 255, 255, 0.8); /* Glowing border */
-  border-radius: {{borderRadius + 4}}px; /* Slightly rounder corners */
-  margin-bottom: 8px;
-  padding: 12px; /* Slightly larger padding for emphasis */
-  font-size: {{goalFontSize}}px; /* Slightly larger font */
-  color: #ffffff; /* Bright white text */
-  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8); /* Glowing text effect */
-  box-shadow: 0 4px 15px rgba(72, 61, 139, 0.5); /* Cool glow around the goal */
-  overflow: hidden;
-}
-
-/* Enhanced pseudo-element for the middle goal */
-.middle-goal-item::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.8),
-    transparent
-  );
-  transform: rotate(45deg);
-  filter: blur(3px); /* Slightly stronger blur */
-  animation: shine 2s infinite; /* Faster shine animation */
 }
 
 
@@ -160,16 +125,18 @@
 }
 
 .text-left {
-  -webkit-text-stroke: 0.15px black;
+/*  -webkit-text-stroke: 0.15px black;*/
   padding-right: .5em;
   text-align: left;
-  text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;}
+/*  text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;*/
+}
 
 .text-right {
-  -webkit-text-stroke: 0.15px black;
+/*  -webkit-text-stroke: 0.15px black;*/
   padding-right: .5em;
   text-align: right;
-  text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;}
+/*  text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;*/
+}
 
 
 .goal-reached {

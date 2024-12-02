@@ -303,7 +303,15 @@ async function updateMilestones() {
             highestAchievedGoal = i;
         }
     }
-    if (highestAchievedGoal == previousHighestGoal) return;
+    if (highestAchievedGoal == previousHighestGoal) {
+        // should never come here.
+        return;
+    }
+
+    var goalsProgressElement = document.getElementById('donation-goal');
+    var nextGoal = (donoMilestones.length > highestAchievedGoal) + 1 ? donoMilestones[highestAchievedGoal + 1].value : "?";
+    goalsProgressElement.textContent = nextGoal
+
 
     while (previousHighestGoal < highestAchievedGoal) {
         previousHighestGoal++
@@ -494,20 +502,23 @@ window.addEventListener('onEventReceived', function(obj) {
 });
 
 function updateMilestonesAchieved(count) {
+    let milestoneChanged = false;
     donoMilestones.forEach(function(goal) {
         if (count >= goal.value && !goal.achieved) {
             goal.achieved = true;
+            milestoneChanged = true;
         }
     });
 
     updateGoalsDisplay();
+    if (milestoneChanged) {
+        updateMilestones();
+    }
 }
 
 function updateGoalsDisplay() {
     var goalsProgressElement = document.getElementById('donation-progress');
     goalsProgressElement.textContent = donoCount;
-
-    updateMilestones();
 }
 
 function populateInitialMilestones() {

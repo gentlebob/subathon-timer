@@ -672,60 +672,6 @@ function isModerator(data) {
 };
 
 
-let backgroundChanged = false;
-
-setInterval(() => {
-    //if(!finishedLoading) return;
-
-    updateMilestonesAchieved(donoCount);
-    var goalsListElement = document.getElementById('donation-goals-list');
-    var middleGoalElement = document.querySelector('.goal-item');
-    var computedStyle = window.getComputedStyle(middleGoalElement);
-
-    new Promise(resolve => {
-        $(goalsListElement.childNodes[0]).animate({
-            backgroundColor: goalFadedBackground,
-            color: goalFadedColor,
-        }, 'normal', resolve);
-    });
-    if (previousHighestGoal == 29) {
-        let completedOne = goalsListElement.childNodes[0];
-        let notCompletedOne = goalsListElement.childNodes[2]
-
-        if (!backgroundChanged) {
-            for (let property of computedStyle) {
-                notCompletedOne.style[property] = computedStyle.getPropertyValue(property);
-            }
-            backgroundChanged = true;
-        }
-
-
-        middleGoalElement.style.background = colorForLastGoals;
-
-        new Promise(resolve => {
-            $(completedOne).animate({
-                backgroundColor: goalFadedBackground,
-                color: goalFadedColor,
-            }, 'normal', resolve);
-        });
-        middleGoalElement.appendChild(img);
-        new Promise(resolve => {
-            $(img).animate({
-                opacity: 1,
-                width: '100%',
-            }, 'normal', resolve);
-        });
-        new Promise(resolve => {
-            $(middleGoalElement).animate({
-                backgroundColor: goalFadedBackground,
-                color: goalFadedColor,
-            }, 'normal', resolve);
-        });
-
-    }
-}, 3000);
-
-
 timerTick = setInterval(() => {
     if (timeLeft > 0) {
         timeLeft -= 1;

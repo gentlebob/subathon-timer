@@ -247,15 +247,15 @@ window.addEventListener('onWidgetLoad', function(obj) {
 });
 
 
-const emotes = {
-    "INSANE": "01HPRH2DT00000X4ZG70YHEZHT",
-    "OhShit:": "01F12P9KYG0009V7MP006J8KRF",
-    "WidePogCrazy:": "01G4ZHV228000B2BBGEQH5KFJK",
-    "HOLY:": "01GFW1BAK80001VXKTCH0VEANC",
-    "WAHOO:": "01J5PXJXQG000CDPBQWFAR9ZR4",
-    "CutePog:": "01HAGQA0VR000CK4GBCA21BZ37",
-    "83:": "01HB7ZMVZR00072K8QAE93K1NP"
-};
+const emotes = [
+    "01HPRH2DT00000X4ZG70YHEZHT", // INSANE
+    "01F12P9KYG0009V7MP006J8KRF", // OhShit
+    "01G4ZHV228000B2BBGEQH5KFJK", // WidePogCrazy
+    "01GFW1BAK80001VXKTCH0VEANC", // HOLY
+    "01J5PXJXQG000CDPBQWFAR9ZR4", // WAHOO
+    "01HAGQA0VR000CK4GBCA21BZ37", // CutePog
+    "01HB7ZMVZR00072K8QAE93K1NP" // 83
+];
 
 function getImageForDonation(donoCount) {
 
@@ -348,12 +348,7 @@ async function updateMilestones() {
 
 
 function spawnEmote() {
-
-
-    const emoteKeys = Object.keys(emotes);
-    const randomEmoteKey = emoteKeys[Math.floor(Math.random() * emoteKeys.length)];
-    const emoteId = emotes[randomEmoteKey];
-
+    const emoteId = emotes[Math.floor(Math.random() * emotes.length)];
 
     const emoteImg = document.createElement("img");
     emoteImg.src = `https://cdn.7tv.app/emote/${emoteId}/3x.webp`;

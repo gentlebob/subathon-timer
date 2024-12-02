@@ -11,7 +11,7 @@
 #event-info-container {  
   border: {{timerBorder}}px solid {{timerBorderColor}};
   border-radius: {{borderRadius}}px;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
   padding: 8px;
   color: {{timerColor}};
   background-image: url("https://c.tenor.com/wVffZ201Z9UAAAAC/tenor.gif");
@@ -65,19 +65,26 @@
 
 /* General goal-item styling */
 .goal-item {
-/*  -webkit-text-stroke: 0.15px black;*/
-  background: linear-gradient(135deg, #4a90e2, #8e44ad);
   position: relative;
-/*  border: {{goalBorder}}px solid {{goalBorderColor}};*/
   border-radius: 0px;
-  margin-bottom: 8px;
-  padding: 8px;
+  margin-bottom: 0px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: {{goalFontSize}}px;
   color: {{goalColor}};
   text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;
   overflow: hidden; /* Ensures the shine effect stays within the element */
 }
 
+.goal-item-completed {
+  background: {{goalFadedColor}};
+}
+
+.goal-item-pending {
+  background: linear-gradient(10deg, #4a90e2, #8e44ad);
+}
 
 /* Add a pseudo-element for the shining effect */
 .goal-item::before {
@@ -133,7 +140,7 @@
 
 .text-right {
 /*  -webkit-text-stroke: 0.15px black;*/
-  padding-right: .5em;
+/*  padding-right: .5em;*/
   text-align: right;
 /*  text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;*/
 }

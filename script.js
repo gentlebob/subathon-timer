@@ -332,6 +332,8 @@ async function updateMilestones() {
         } else {
             completedGoal = goalsListElement.childNodes[1];
         }
+        completedGoal.classList.add("goal-item-completed");
+        completedGoal.classList.remove("goal-item-pending");
 
         new Promise(resolve => {
             $(completedGoal).animate({
@@ -586,6 +588,8 @@ async function slide(newMilestone) {
 function createGoal(goal) {
     let listItem = document.createElement('div');
     listItem.classList.add('goal-item');
+    listItem.classList.add("goal-item-pending");
+
     let goalItem = document.createElement('div');
     goalItem.classList.add('inline-container');
 
